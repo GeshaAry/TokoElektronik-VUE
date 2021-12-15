@@ -5,7 +5,7 @@
                 <v-flex xs6 sm4 elevation-1 kotaklogin class="displaynone">
                     <div>
                         <v-card class="background" style="box-shadow:none; background-color:white;">
-                            <v-img src="http://localhost:8082/img/foto.png" class="gambar"></v-img>
+                            <v-img src="./img/foto.png" class="gambar"></v-img>
 
                         </v-card>
                     </div>

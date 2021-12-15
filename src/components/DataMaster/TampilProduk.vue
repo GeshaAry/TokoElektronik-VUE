@@ -11,7 +11,7 @@
             <v-row class="rowProduk" style="max-width:900px;">
                 <v-col v-for="(item, index) in produk" :key="index" md="4">
                     <v-card style="width: 100%; max-width: 395px; overflow:hidden; box-shadow:0px 2px 6px rgba(0,0,0,0.05)">
-                        <v-img class="white--text align-end" :src="'http://localhost:8000/storage/'+item.gambar_produk">
+                        <v-img class="white--text align-end" :src="$baseUrl+'/public/storage/'+item.gambar_produk">
                         </v-img>
 
                         <v-chip class="mt-2 mb-2 mr-0 ml-2" style="float:left;" color="primary">
@@ -26,7 +26,7 @@
                         </h1>
 
                         <p class="text--primary">
-                            Harga : Rp.{{ item.harga_produk }}
+                            Harga : Rp.{{ item.harga_produk.toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1\.") }}
                         </p>
 
                         <v-card-actions>
@@ -89,19 +89,19 @@
                     'deep-purple accent-4',
                 ],
                 slides: [{
-                        src: 'http://localhost:8082/img/gambariphone.jpg',
+                        src: './img/gambariphone.jpg',
                     },
                     {
-                        src: 'http://localhost:8082/img/gambarrog.jpg',
+                        src: './img/gambarrog.jpg',
                     },
                     {
-                        src: 'http://localhost:8082/img/gambarsamsung.jpg',
+                        src: './img/gambarsamsung.jpg',
                     },
                 ],
             };
         },
         mounted() {
-            this.$http.get(this.$api + '/produk/', {
+            this.$http.get(this.$api + '/produk?status=1', {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }

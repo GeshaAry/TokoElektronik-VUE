@@ -19,7 +19,7 @@
                 </v-container> -->
                 <v-row>
                     <v-col md="6">
-                        <v-img class="gambar" :src="'http://localhost:8000/storage/'+produk.gambar_produk"></v-img>
+                        <v-img class="gambar" :src="$baseUrl+'/public/storage/'+produk.gambar_produk"></v-img>
                     </v-col>
                     <v-col md="6">
                         <div class="pembungkus text-left">
@@ -172,6 +172,11 @@
         border-radius: 0 0 0px 20px;
         color: #1976d2;
     }
+    @media screen and (max-width:768px) {
+        .stok{
+            background-color: #d1e3f6;
+        }
+    }
 </style>
 <script>
     export default {
@@ -204,8 +209,8 @@
                 diskusi: new FormData,
                 komentar: [],
                 form: {
-                    komentar: null,
-                    id: null,
+                    komentar: '',
+                    id: '',
                 },
                 deleteId: '',
                 editId: ''
@@ -223,7 +228,7 @@
                 }
             },
             readData() {
-                var url = this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi/';
+                var url = this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi';
                 this.$http.get(url, {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -237,7 +242,7 @@
                 this.diskusi.append('id_produk', this.$route.params.id);
                 this.diskusi.append('id_user', localStorage.getItem('id'));
 
-                var url = this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi/';
+                var url = this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi';
                 this.load = true;
 
                 this.$http.post(url, this.diskusi, {
@@ -253,6 +258,7 @@
                     this.readData();
                     this.resetForm();
                     this.getKomentar();
+                    location.reload();
                 }).catch(error => {
                     this.error_message = error.response.data.message;
                     this.color = "red";
@@ -282,6 +288,7 @@
                     this.resetForm();
                     this.inputType = 'Tambah';
                     this.getKomentar();
+                    location.reload();
                 }).catch(error => {
                     this.error_message = error.response.data.message;
                     this.color = "red";
@@ -362,7 +369,7 @@
                     })
             },
             getKomentar() {
-                this.$http.get(this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi/', {
+                this.$http.get(this.$api + '/detailproduk/' + this.$route.params.id + '/diskusi', {
                         headers: {
                             'Authorization': 'Bearer ' + localStorage.getItem('token')
                         }

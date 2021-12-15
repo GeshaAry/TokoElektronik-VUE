@@ -2,7 +2,7 @@
   <v-main>
     <v-container>
       <v-container>
-        <v-row v-if="admin == 'gesha@tokoelektronik.com' ">
+        <v-row v-if="admin == 'admin@tokoelektronik.com' ">
 
           <v-col>
             <div class="kotaklenght">
@@ -30,7 +30,7 @@
           <v-row class="justify-center align-center" style="height:100%" >
             <v-col cols="12">
               <v-card style="background-color:#082032;">
-              <v-img src="http://localhost:8082/img/logo te.png" width="100px" height="32px"></v-img>
+              <v-img src="./img/logo te.png" width="100px" height="32px"></v-img>
               <h1 style="color:white; padding:20px;">Selamat Datang, {{ user.name }}</h1>
               </v-card>
             </v-col>
@@ -38,7 +38,7 @@
         </v-row>
       </v-container>
     </v-container>
-    <v-img max-width="400px" height="350px" class="hiasanKiri" src="http://localhost:8082/img/intersection 1.png">
+    <v-img max-width="400px" height="350px" class="hiasanKiri" src="./img/intersection 1.png">
     </v-img>
   </v-main>
 
@@ -55,7 +55,7 @@
       };
     },
     mounted() {
-      this.$http.get(this.$api + '/produk/', {
+      this.$http.get(this.$api + '/produk', {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }
@@ -67,7 +67,7 @@
           console.log(error)
         })
 
-      this.$http.get(this.$api + '/kategoriproduk/', {
+      this.$http.get(this.$api + '/kategoriproduk', {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }
@@ -79,7 +79,7 @@
           console.log(error)
         })
 
-      this.$http.get(this.$api + '/diskusi/', {
+      this.$http.get(this.$api + '/diskusi', {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }

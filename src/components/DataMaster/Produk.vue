@@ -56,11 +56,11 @@
                                 </v-card-title>
                                 <v-flex align-center>
                                     <v-img width="550px"
-                                        :src="previewImageUrl == '' ? 'http://localhost:8000/storage/'+form.gambar_produk : previewImageUrl"
+                                        :src="previewImageUrl == '' ? $baseUrl+'/public/storage/'+form.gambar_produk : previewImageUrl"
                                         id="previewImage" class="mb-5"></v-img>
                                 </v-flex>
                                 <v-file-input rounded filled prepend-icon="mdi-camera" @change="onPreviewImage"
-                                    label="File input" id="file"></v-file-input>
+                                    label="File input" id="file" ref="fileGambar"></v-file-input>
                                 <v-select filled rounded append-icon="mdi-shape" v-model="selectKategori" :items="items"
                                     item-text="kategori" item-value="id" label="Pilih Kategori Produk" persistent-hint
                                     return-object single-line></v-select>
@@ -228,7 +228,7 @@
                     dataFile = inputGambar.files[0];
                 this.produk.append('gambar_produk', dataFile);
 
-                var url = this.$api + '/produk/'
+                var url = this.$api + '/produk'
                 this.load = true;
 
                 this.$http.post(url, this.produk, {
@@ -243,6 +243,7 @@
                     this.close();
                     this.readData();
                     this.resetForm();
+                    location.reload();
                 }).catch(error => {
                     this.error_message = error.response.data.message;
                     this.color = "red";
@@ -283,6 +284,7 @@
                     this.close();
                     this.readData();
                     this.resetForm();
+                    location.reload();
                     this.inputType = 'Tambah';
                 }).catch(error => {
                     this.error_message = error.response.data.message;

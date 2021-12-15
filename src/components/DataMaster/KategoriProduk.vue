@@ -118,7 +118,7 @@
             save() {
                 this.kategori_produk.append('kategori', this.form.kategori);
 
-                var url = this.$api + '/kategoriproduk/'
+                var url = this.$api + '/kategoriproduk'
                 this.load = true;
 
                 this.$http.post(url, this.kategori_produk, {

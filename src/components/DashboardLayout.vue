@@ -3,7 +3,7 @@
         <v-navigation-drawer v-model="drawer" class="fullheight" width="256" app>
             <v-list-item class="kotaknama">
                 <v-list-item-content>
-                    <v-img src="http://localhost:8082/img/logo te.png" width="200px" height="52px">
+                    <v-img src="./img/logo te.png" width="200px" height="52px">
 
                     </v-img>
                 </v-list-item-content>
@@ -104,7 +104,7 @@
                 return localStorage.getItem("token") != null;
             },
             loggedInAdmin() {
-                return localStorage.getItem("email") == "gesha@tokoelektronik.com";
+                return localStorage.getItem("email") == "admin@tokoelektronik.com";
             },
         }
     };

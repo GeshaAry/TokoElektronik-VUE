@@ -8,7 +8,10 @@ import axios from 'axios';
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios;
-Vue.prototype.$api = 'http://127.0.0.1:8000/api';
+Vue.prototype.$baseUrl = 'https://api.tokoelektronik.xyz';
+Vue.prototype.$api = 'https://api.tokoelektronik.xyz/api';
+// Vue.prototype.$baseUrl = 'http://localhost:8000';
+// Vue.prototype.$api = 'http://127.0.0.1:8000/api';
 
 
 new Vue({

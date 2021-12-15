@@ -103,16 +103,16 @@ router.beforeEach((to, from, next) =>{
     }
 
     //user biasa
-   if(to.name == "TampilProduk" && localStorage.getItem("email") == "gesha@tokoelektronik.com" && localStorage.getItem("token") != null ||
-   to.name == "DetailProfile" && localStorage.getItem("email") == "gesha@tokoelektronik.com" && localStorage.getItem("token") != null ||
-   to.name == "DetailProduk" && localStorage.getItem("email") == "gesha@tokoelektronik.com" && localStorage.getItem("token") != null){
+   if(to.name == "TampilProduk" && localStorage.getItem("email") == "admin@tokoelektronik.com" && localStorage.getItem("token") != null ||
+   to.name == "DetailProfile" && localStorage.getItem("email") == "admin@tokoelektronik.com" && localStorage.getItem("token") != null ||
+   to.name == "DetailProduk" && localStorage.getItem("email") == "admin@tokoelektronik.com" && localStorage.getItem("token") != null){
        next({ name: "Homepage" })
        document.to.meta.title = "Homepage"
    }
 
    //admin
-   if(to.name == "KategoriProduk" && localStorage.getItem("email") != "gesha@tokoelektronik.com" && localStorage.getItem("token") != null ||
-   to.name == "Produk" && localStorage.getItem("email") != "gesha@tokoelektronik.com" && localStorage.getItem("token") != null
+   if(to.name == "KategoriProduk" && localStorage.getItem("email") != "admin@tokoelektronik.com" && localStorage.getItem("token") != null ||
+   to.name == "Produk" && localStorage.getItem("email") != "admin@tokoelektronik.com" && localStorage.getItem("token") != null
    ){
        next({ name: "Homepage" })
        document.to.meta.title = "Homepage"
